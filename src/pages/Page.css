@@ -1,0 +1,53 @@
+.page {
+  flex: 1;
+}
+
+.page-hero {
+  background-color: var(--color-navy);
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-size: 54px;
+  color: var(--color-teal);
+}
+
+.page-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+  text-align: center;
+}
+
+.page-body {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-details {
+  margin-bottom: 30px;
+}
+
+.contact-phone {
+  display: block;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-teal);
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.contact-phone:hover {
+  color: var(--color-orange);
+}
+
+.contact-note {
+  font-size: 16px;
+  color: var(--color-body);
+  line-height: 1.6;
+}

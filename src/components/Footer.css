@@ -1,0 +1,50 @@
+.footer {
+  background-color: var(--color-footer);
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 40px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.footer-facebook {
+  color: #b8b8b8;
+  font-size: 22px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-facebook:hover {
+  color: var(--color-teal);
+}
+
+.footer-logo {
+  max-width: 297px;
+  width: 100%;
+}
+
+.footer-copyright {
+  color: #c7c7c7;
+  font-size: 10px;
+  font-family: var(--font-copyright);
+  text-transform: none;
+}
+
+.footer-phone {
+  color: var(--color-footer-text);
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: var(--font-main);
+}
+
+.footer-phone:hover {
+  color: var(--color-teal);
+}
