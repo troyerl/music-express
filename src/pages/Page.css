@@ -62,26 +62,27 @@
   margin: 30px auto 0;
 }
 
-.contact-details {
-  margin-top: 30px;
-  text-align: center;
+.page-inner--contact {
+  padding-top: 20px;
 }
 
-.contact-phone {
-  display: block;
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--color-teal);
-  text-decoration: none;
-  margin-bottom: 16px;
+.page-inner--contact .page-blocks {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.contact-phone:hover {
-  color: var(--color-orange);
+.page-inner--contact .content-blocks {
+  align-items: center;
+  width: 100%;
 }
 
-.contact-note {
-  font-size: 16px;
-  color: var(--color-body);
-  line-height: 1.6;
+.page-inner--contact .content-form {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-inner--contact > .btn {
+  margin-top: 40px;
 }

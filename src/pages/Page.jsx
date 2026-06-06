@@ -33,6 +33,7 @@ export default function Page({ pagePath }) {
     isStudio ? 'page--studio' : '',
     pagePath === '/equipment' ? 'page--equipment' : '',
     pagePath === '/clients' ? 'page--clients' : '',
+    pagePath === '/contact-us' ? 'page--contact' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -41,6 +42,7 @@ export default function Page({ pagePath }) {
     'page-inner',
     pagePath === '/equipment' ? 'page-inner--equipment' : '',
     pagePath === '/clients' ? 'page-inner--clients' : '',
+    pagePath === '/contact-us' ? 'page-inner--contact' : '',
     isStudio ? 'page-inner--studio' : '',
   ]
     .filter(Boolean)
@@ -58,15 +60,6 @@ export default function Page({ pagePath }) {
         {blocks.length > 0 && (
           <div className="page-blocks">
             <ContentBlocks blocks={blocks} />
-          </div>
-        )}
-
-        {pagePath === '/contact-us' && (
-          <div className="contact-details">
-            <a href={`tel:${content.phone.replace(/-/g, '')}`} className="contact-phone">
-              {content.phone}
-            </a>
-            <p className="contact-note">Serving Indiana and Michigan — {content.serviceAreas}</p>
           </div>
         )}
 

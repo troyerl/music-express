@@ -69,6 +69,36 @@ VITE_COGNITO_CLIENT_ID=your_app_client_id
 
 On first deploy, visitors see the default site until you sign in and publish once from admin.
 
+## Contact form email
+
+When a visitor submits a contact form, the site sends an email in the background. No mail app opens on the visitor's device.
+
+### Free setup (recommended) — Web3Forms
+
+[Web3Forms](https://web3forms.com) is free (250 submissions/month), requires no credit card, and takes about 2 minutes:
+
+1. Go to [web3forms.com](https://web3forms.com) and create a free account using **musicexpress@maplenet.net** (or whichever inbox should receive submissions).
+2. Copy your **Access Key**.
+3. Add it to your local `.env` and to Vercel → **Settings → Environment Variables**:
+
+| Variable | Value |
+|---|---|
+| `VITE_WEB3FORMS_ACCESS_KEY` | your access key from Web3Forms |
+
+4. Restart the dev server (`npm run dev`) or redeploy on Vercel.
+
+Submissions go to the email you used when signing up for Web3Forms. The access key is included in the site bundle (Web3Forms is designed for this); you can restrict allowed domains in the Web3Forms dashboard.
+
+In admin, **Send submissions to email** can stay set to your inbox for reference. Web3Forms delivers to the email on your Web3Forms account.
+
+### Other options
+
+**Resend** — free tier (3,000 emails/month): set `RESEND_API_KEY` and `CONTACT_FROM_EMAIL`.
+
+**SMTP** — use your existing email login: set `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS`, and `CONTACT_FROM_EMAIL`.
+
+**Formspree** — free tier (50/month): paste your Formspree form URL in the admin form block under **Form service URL (optional)** instead of using the options above.
+
 ## Build
 
 ```bash

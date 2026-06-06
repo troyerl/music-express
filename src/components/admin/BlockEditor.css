@@ -142,3 +142,21 @@
   color: #fff;
   border-color: var(--color-teal);
 }
+
+.form-field-editor {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+
+.form-field-add {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.form-field-required {
+  align-self: end;
+  margin-bottom: 8px;
+}

@@ -360,9 +360,58 @@ export const STUDIO_TEMPLATE = {
   blocks: [],
 };
 
+export const CONTACT_US_TEMPLATE = {
+  title: 'Contact Us',
+  body: '',
+  blocks: [
+    {
+      id: 'contact-intro',
+      type: 'heading',
+      text: 'we look forward to hearing from you',
+      level: 3,
+      color: '#636363',
+      fontSize: '20px',
+      textAlign: 'center',
+    },
+    {
+      id: 'contact-headline',
+      type: 'heading',
+      text: 'SHOOT US A MESSAGE, GIVE US A CALL.',
+      level: 2,
+      color: '#27afcf',
+      fontSize: '36px',
+      textAlign: 'center',
+    },
+    {
+      id: 'contact-info',
+      type: 'html',
+      html: `<div class="contact-info-block">
+  <p><strong>Phone:</strong> <a href="tel:5745367147">574-536-7147</a></p>
+  <p><strong>E-mail:</strong> <a href="mailto:musicexpress@maplenet.net">musicexpress@maplenet.net</a></p>
+</div>`,
+    },
+    {
+      id: 'contact-form',
+      type: 'form',
+      intro: '',
+      fields: [
+        { id: 'field-subject', label: 'Subject', type: 'text', required: true, placeholder: 'What is this regarding?', options: '' },
+        { id: 'field-message', label: 'Message', type: 'textarea', required: true, placeholder: 'Tell us about your event or question...', options: '' },
+        { id: 'field-name', label: 'Name', type: 'text', required: true, placeholder: 'Your full name', options: '' },
+        { id: 'field-email', label: 'Email', type: 'email', required: true, placeholder: 'you@example.com', options: '' },
+      ],
+      submitLabel: 'Send Message',
+      successMessage: 'Thank you for contacting us! Someone will be contacting you within 12-24 hours.',
+      recipientEmail: 'musicexpress@maplenet.net',
+      formAction: '',
+    },
+  ],
+};
+
 export const PAGE_TEMPLATES = {
   '/about-us': ABOUT_US_TEMPLATE,
   '/clients': CLIENTS_TEMPLATE,
   '/equipment': EQUIPMENT_TEMPLATE,
   '/studio': STUDIO_TEMPLATE,
+  '/contact-us': CONTACT_US_TEMPLATE,
 };

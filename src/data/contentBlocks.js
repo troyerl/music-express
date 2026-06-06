@@ -4,6 +4,15 @@ export const BLOCK_TYPES = [
   { value: 'html', label: 'HTML Block' },
   { value: 'image', label: 'Image' },
   { value: 'carousel', label: 'Carousel' },
+  { value: 'form', label: 'Contact Form' },
+];
+
+export const FORM_FIELD_TYPES = [
+  { value: 'text', label: 'Text' },
+  { value: 'email', label: 'Email' },
+  { value: 'tel', label: 'Phone' },
+  { value: 'textarea', label: 'Message box' },
+  { value: 'select', label: 'Dropdown' },
 ];
 
 export const FONT_SIZES = [
@@ -21,6 +30,18 @@ let blockCounter = 0;
 export function createBlockId() {
   blockCounter += 1;
   return `block-${Date.now()}-${blockCounter}`;
+}
+
+export function createFormField(overrides = {}) {
+  return {
+    id: createBlockId(),
+    label: 'New field',
+    type: 'text',
+    required: false,
+    placeholder: '',
+    options: '',
+    ...overrides,
+  };
 }
 
 export function createBlock(type) {
@@ -60,6 +81,21 @@ export function createBlock(type) {
         images: [],
         interval: 6000,
         height: '400px',
+      };
+    case 'form':
+      return {
+        id,
+        type: 'form',
+        intro: '',
+        fields: [
+          createFormField({ label: 'Name', type: 'text', required: true }),
+          createFormField({ label: 'Email', type: 'email', required: true }),
+          createFormField({ label: 'Message', type: 'textarea', required: true }),
+        ],
+        submitLabel: 'Send Message',
+        successMessage: 'Thank you for contacting us! Someone will be contacting you within 12-24 hours.',
+        recipientEmail: '',
+        formAction: '',
       };
     default:
       return {
@@ -140,6 +176,14 @@ export function blocksFromDraft(blocks) {
       delete next.imagesText;
       return next;
     }
+
+    if (block.type === 'form' && block.fields?.length) {
+      return {
+        ...block,
+        fields: block.fields.map((field) => ({ ...createFormField(), ...field })),
+      };
+    }
+
     return block;
   });
 }

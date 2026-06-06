@@ -1,4 +1,4 @@
-import { ABOUT_US_TEMPLATE, CLIENTS_TEMPLATE, EQUIPMENT_TEMPLATE, STUDIO_TEMPLATE } from './pageTemplates.js';
+import { ABOUT_US_TEMPLATE, CLIENTS_TEMPLATE, CONTACT_US_TEMPLATE, EQUIPMENT_TEMPLATE, STUDIO_TEMPLATE } from './pageTemplates.js';
 
 export const DEFAULT_CONTENT = {
   phone: '574-536-7147',
@@ -116,9 +116,8 @@ export const DEFAULT_CONTENT = {
       blocks: [],
     },
     '/contact-us': {
-      title: 'Contact Us',
-      body: 'Ready to elevate your next event? Call us or reach out today. We serve Indiana and Michigan.',
-      blocks: [],
+      ...CONTACT_US_TEMPLATE,
+      blocks: structuredClone(CONTACT_US_TEMPLATE.blocks),
     },
   },
   homeBlocks: [],

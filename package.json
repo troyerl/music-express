@@ -13,6 +13,7 @@
     "@vercel/blob": "^2.4.0",
     "aws-amplify": "^6.17.0",
     "aws-jwt-verify": "^5.2.1",
+    "nodemailer": "^8.0.10",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.16.0"

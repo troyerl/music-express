@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { FONT_SIZES, TEXT_ALIGN_OPTIONS, createBlock } from '../../data/contentBlocks';
+import { FONT_SIZES, TEXT_ALIGN_OPTIONS, createBlock, createFormField, FORM_FIELD_TYPES } from '../../data/contentBlocks';
 import { processImageFiles } from '../../utils/imageUpload';
 import { tryUploadImage } from '../../utils/contentApi';
 import ImageUploadField from './ImageUploadField';
@@ -144,6 +144,110 @@ function CarouselImagesEditor({ block, onChange, uploadedMedia, onAddMedia }) {
   );
 }
 
+function FormFieldsEditor({ block, onChange }) {
+  const fields = block.fields || [];
+
+  const updateField = (index, key, value) => {
+    onChange(
+      'fields',
+      fields.map((field, i) => (i === index ? { ...field, [key]: value } : field)),
+    );
+  };
+
+  const addField = () => {
+    onChange('fields', [...fields, createFormField()]);
+  };
+
+  const removeField = (index) => {
+    onChange(
+      'fields',
+      fields.filter((_, i) => i !== index),
+    );
+  };
+
+  const moveField = (index, direction) => {
+    const next = [...fields];
+    const target = index + direction;
+    if (target < 0 || target >= next.length) return;
+    [next[index], next[target]] = [next[target], next[index]];
+    onChange('fields', next);
+  };
+
+  return (
+    <>
+      <Field label="Form Fields">
+        {fields.length === 0 && <p className="block-editor-empty">No fields yet. Add one below.</p>}
+
+        {fields.map((field, index) => (
+          <div key={field.id} className="form-field-editor">
+            <div className="block-editor-item-header">
+              <span className="block-type-badge">{field.type}</span>
+              <div className="block-editor-item-actions">
+                <button type="button" onClick={() => moveField(index, -1)} disabled={index === 0}>
+                  ↑
+                </button>
+                <button type="button" onClick={() => moveField(index, 1)} disabled={index === fields.length - 1}>
+                  ↓
+                </button>
+                <button type="button" className="block-remove" onClick={() => removeField(index)}>
+                  Remove
+                </button>
+              </div>
+            </div>
+
+            <div className="admin-row">
+              <Field label="Label">
+                <input type="text" value={field.label} onChange={(e) => updateField(index, 'label', e.target.value)} />
+              </Field>
+              <Field label="Field Type">
+                <select value={field.type} onChange={(e) => updateField(index, 'type', e.target.value)}>
+                  {FORM_FIELD_TYPES.map(({ value, label }) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+            </div>
+
+            <div className="admin-row">
+              <Field label="Placeholder">
+                <input
+                  type="text"
+                  value={field.placeholder || ''}
+                  onChange={(e) => updateField(index, 'placeholder', e.target.value)}
+                />
+              </Field>
+              <label className="admin-checkbox form-field-required">
+                <input
+                  type="checkbox"
+                  checked={!!field.required}
+                  onChange={(e) => updateField(index, 'required', e.target.checked)}
+                />
+                Required field
+              </label>
+            </div>
+
+            {field.type === 'select' && (
+              <Field label="Dropdown options" hint="One option per line">
+                <textarea
+                  rows={3}
+                  value={field.options || ''}
+                  onChange={(e) => updateField(index, 'options', e.target.value)}
+                />
+              </Field>
+            )}
+          </div>
+        ))}
+
+        <button type="button" className="btn btn-gray form-field-add" onClick={addField}>
+          + Add field
+        </button>
+      </Field>
+    </>
+  );
+}
+
 function BlockFields({ block, onChange, uploadedMedia, onAddMedia }) {
   switch (block.type) {
     case 'heading':
@@ -202,6 +306,58 @@ function BlockFields({ block, onChange, uploadedMedia, onAddMedia }) {
           </Field>
           <Field label="Link URL (optional)">
             <input type="text" value={block.link} onChange={(e) => onChange('link', e.target.value)} />
+          </Field>
+        </>
+      );
+
+    case 'form':
+      return (
+        <>
+          <Field label="Intro text (optional)">
+            <input type="text" value={block.intro || ''} onChange={(e) => onChange('intro', e.target.value)} />
+          </Field>
+
+          <FormFieldsEditor block={block} onChange={onChange} />
+
+          <div className="admin-row">
+            <Field label="Submit button text">
+              <input
+                type="text"
+                value={block.submitLabel || ''}
+                onChange={(e) => onChange('submitLabel', e.target.value)}
+              />
+            </Field>
+            <Field label="Send submissions to email">
+              <input
+                type="email"
+                value={block.recipientEmail || ''}
+                onChange={(e) => onChange('recipientEmail', e.target.value)}
+                placeholder="musicexpress@maplenet.net"
+              />
+            </Field>
+          </div>
+
+          <Field
+            label="Success message"
+            hint="Shown after someone submits the form."
+          >
+            <textarea
+              rows={3}
+              value={block.successMessage || ''}
+              onChange={(e) => onChange('successMessage', e.target.value)}
+            />
+          </Field>
+
+          <Field
+            label="Form service URL (optional)"
+            hint="Leave blank for automatic email (free with Web3Forms — see README). Use this only for Formspree or similar."
+          >
+            <input
+              type="url"
+              value={block.formAction || ''}
+              onChange={(e) => onChange('formAction', e.target.value)}
+              placeholder="https://formspree.io/f/..."
+            />
           </Field>
         </>
       );
@@ -288,6 +444,7 @@ export default function BlockEditor({ blocks, onChange, label, uploadedMedia = [
             <option value="html">HTML Block</option>
             <option value="image">Image</option>
             <option value="carousel">Carousel</option>
+            <option value="form">Contact Form</option>
           </select>
         </div>
       </div>

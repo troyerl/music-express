@@ -1,4 +1,6 @@
 import ImageGallery from './ImageGallery';
+import FormBlock from './FormBlock';
+import './FormBlock.css';
 import './ContentBlocks.css';
 
 function blockStyle({ color, fontSize, textAlign }) {
@@ -84,6 +86,8 @@ export default function ContentBlocks({ blocks }) {
             return block.src ? <ImageBlock key={block.id} block={block} /> : null;
           case 'carousel':
             return <CarouselBlock key={block.id} block={block} />;
+          case 'form':
+            return block.fields?.length ? <FormBlock key={block.id} block={block} /> : null;
           case 'text':
           default:
             return <TextBlock key={block.id} block={block} />;
