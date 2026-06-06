@@ -1,24 +1,34 @@
 import Hero from '../components/Hero';
 import FeatureCards from '../components/FeatureCards';
-import { SERVICE_AREAS } from '../data/siteData';
+import ContentBlocks from '../components/ContentBlocks';
+import { useContent } from '../context/ContentContext';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
 export default function Home() {
+  const { content } = useContent();
+  const { serviceAreas, regionBanner, homeBlocks } = content;
+
   return (
     <main className="home">
       <Hero />
       <FeatureCards />
 
+      {homeBlocks?.length > 0 && (
+        <section className="home-blocks">
+          <ContentBlocks blocks={homeBlocks} />
+        </section>
+      )}
+
       <section className="service-areas">
-        <p>{SERVICE_AREAS}</p>
+        <p>{serviceAreas}</p>
       </section>
 
       <section className="region-banner">
-        <h3>WE&apos;LL BE THERE.</h3>
-        <h2>INDIANA. MICHIGAN.</h2>
+        <h3>{regionBanner.title}</h3>
+        <h2>{regionBanner.subtitle}</h2>
         <Link to="/contact-us" className="btn btn-teal region-cta">
-          Contact Us Today
+          {regionBanner.ctaLabel}
         </Link>
       </section>
     </main>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FEATURE_CARDS } from '../data/siteData';
+import { useContent, cardToMedia, cardToButtons } from '../context/ContentContext';
 import './FeatureCards.css';
 
 function CardMedia({ media }) {
@@ -42,24 +42,29 @@ function CardButton({ button }) {
 }
 
 export default function FeatureCards() {
+  const { content } = useContent();
+
   return (
     <section className="feature-cards">
       <div className="feature-cards-grid">
-        {FEATURE_CARDS.map((card) => (
-          <article key={card.title} className="feature-card">
-            <div className="feature-card-inner">
-              <CardMedia media={card.media} />
-              <div className="feature-card-body">
-                <h6>{card.title}</h6>
-                <p>{card.description}</p>
-                <div className="feature-card-actions">
-                  {card.extraButton && <CardButton button={card.extraButton} />}
-                  <CardButton button={card.button} />
+        {content.featureCards.map((card) => {
+          const { button, extraButton } = cardToButtons(card);
+          return (
+            <article key={card.title} className="feature-card">
+              <div className="feature-card-inner">
+                <CardMedia media={cardToMedia(card)} />
+                <div className="feature-card-body">
+                  <h6>{card.title}</h6>
+                  <p>{card.description}</p>
+                  <div className="feature-card-actions">
+                    {extraButton && <CardButton button={extraButton} />}
+                    <CardButton button={button} />
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </section>
   );

@@ -1,0 +1,100 @@
+.page-manager {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.page-manager-add-row {
+  display: flex;
+  gap: 10px;
+}
+
+.page-manager-add-row input {
+  flex: 1;
+  font-size: 15px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.page-manager-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page-manager-row {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 14px;
+  background: #fafafa;
+}
+
+.page-manager-row.active {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 1px var(--color-teal);
+}
+
+.page-manager-row-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.page-manager-select {
+  flex: 1;
+  min-width: 180px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.page-manager-select strong {
+  display: block;
+  font-size: 16px;
+  color: var(--color-navy);
+}
+
+.page-manager-select span {
+  font-size: 13px;
+  color: #888;
+}
+
+.page-manager-nav-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.page-manager-delete {
+  font-size: 12px;
+  padding: 6px 12px;
+  border: 1px solid #fca5a5;
+  border-radius: 4px;
+  background: #fff;
+  color: #b91c1c;
+  cursor: pointer;
+}
+
+.page-manager-row-fields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .page-manager-row-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .page-manager-add-row {
+    flex-direction: column;
+  }
+}

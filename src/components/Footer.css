@@ -48,3 +48,16 @@
 .footer-phone:hover {
   color: var(--color-teal);
 }
+
+.footer-admin-link {
+  color: #666;
+  font-size: 11px;
+  text-decoration: none;
+  margin-top: 8px;
+  opacity: 0.6;
+}
+
+.footer-admin-link:hover {
+  opacity: 1;
+  color: var(--color-teal);
+}

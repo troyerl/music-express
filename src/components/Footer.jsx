@@ -1,12 +1,15 @@
-import { IMAGES, PHONE } from '../data/siteData';
+import { useContent } from '../context/ContentContext';
 import './Footer.css';
 
 export default function Footer() {
+  const { content } = useContent();
+  const { images, phone, copyright, social } = content;
+
   return (
     <footer className="footer">
       <div className="footer-inner">
         <a
-          href="https://facebook.com/"
+          href={social.facebook}
           target="_blank"
           rel="noopener noreferrer"
           className="footer-facebook"
@@ -15,14 +18,16 @@ export default function Footer() {
           <i className="fa fa-facebook-square" />
         </a>
 
-        <img src={IMAGES.footerLogo} alt="Music Express" className="footer-logo" />
+        <img src={images.footerLogo} alt="Music Express" className="footer-logo" />
 
-        <p className="footer-copyright">
-          Copyright &copy; Music Express. All rights reserved
-        </p>
+        <p className="footer-copyright">{copyright}</p>
 
-        <a href={`tel:${PHONE.replace(/-/g, '')}`} className="footer-phone">
-          {PHONE}
+        <a href={`tel:${phone.replace(/-/g, '')}`} className="footer-phone">
+          {phone}
+        </a>
+
+        <a href="/admin" className="footer-admin-link">
+          Admin
         </a>
       </div>
     </footer>

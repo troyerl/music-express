@@ -1,0 +1,144 @@
+.block-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.block-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.block-editor-header h4 {
+  font-size: 14px;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.block-editor-add select {
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.block-editor-empty {
+  font-size: 14px;
+  color: #888;
+  font-style: italic;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.block-editor-item {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 16px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.block-editor-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.block-type-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--color-teal);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.block-editor-item-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.block-editor-item-actions button {
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.block-editor-item-actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.block-editor-item-actions .block-remove {
+  color: #b91c1c;
+  border-color: #fca5a5;
+}
+
+.admin-style-row .admin-color-input {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.admin-color-input input[type='color'] {
+  width: 44px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-color-input input[type='text'] {
+  flex: 1;
+}
+
+.block-preview {
+  padding: 12px;
+  background: #eee;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.block-preview img {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.page-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.page-selector button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.page-selector button.active {
+  background: var(--color-teal);
+  color: #fff;
+  border-color: var(--color-teal);
+}

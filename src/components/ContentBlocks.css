@@ -1,0 +1,270 @@
+.content-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.content-block {
+  margin: 0;
+}
+
+.content-block-text {
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.content-block-heading {
+  font-family: var(--font-main);
+  font-weight: normal;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.content-block-html {
+  line-height: 1.6;
+  text-align: left;
+}
+
+.content-block-html img {
+  max-width: 100%;
+  height: auto;
+}
+
+.about-owner-section {
+  background: #b7b7b7;
+  padding: 40px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin: 10px 0;
+  border-radius: 4px;
+}
+
+.about-owner-photo {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.about-owner-quote {
+  max-width: 450px;
+  text-align: left;
+}
+
+.about-owner-text {
+  color: #ffffff;
+  font-size: 28px;
+  line-height: 1.4;
+  margin: 0 0 20px;
+}
+
+.about-owner-name {
+  color: #ffffff;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: normal;
+}
+
+.about-owner-title {
+  color: #737373;
+  font-size: 19px;
+  margin: 8px 0 0;
+}
+
+@media (max-width: 640px) {
+  .about-owner-photo {
+    width: 220px;
+    height: 220px;
+  }
+
+  .about-owner-text {
+    font-size: 22px;
+  }
+}
+
+.equipment-logos {
+  background: #192438;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 20px;
+  border-radius: 4px 4px 0 0;
+}
+
+.equipment-logo {
+  max-height: 80px;
+  max-width: 180px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(1.05);
+}
+
+.equipment-section {
+  background: #192438;
+  padding: 10px 30px 40px;
+  border-radius: 0 0 4px 4px;
+  margin-bottom: 10px;
+}
+
+.equipment-list {
+  columns: 2;
+  column-gap: 40px;
+}
+
+.equipment-group {
+  break-inside: avoid;
+  margin-bottom: 28px;
+}
+
+.equipment-heading {
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.equipment-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.equipment-group li {
+  color: #d0d0d0;
+  font-size: 18px;
+  line-height: 1.6;
+  padding-left: 12px;
+  position: relative;
+}
+
+.equipment-group li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 4px;
+  height: 4px;
+  background: var(--color-teal);
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .equipment-list {
+    columns: 1;
+  }
+
+  .equipment-logo {
+    max-height: 60px;
+    max-width: 140px;
+  }
+}
+
+.clients-page {
+  text-align: center;
+  padding: 10px 0 30px;
+}
+
+.clients-title {
+  color: #000080;
+  font-family: var(--font-main);
+  font-size: 56px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin: 0 0 30px;
+  font-weight: normal;
+}
+
+.clients-heading {
+  color: #000080;
+  font-family: var(--font-main);
+  font-size: 48px;
+  line-height: 1.1;
+  text-transform: lowercase;
+  margin: 0 0 24px;
+  font-weight: normal;
+}
+
+.clients-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.clients-item {
+  color: #636363;
+  font-size: 22px;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.clients-more {
+  color: #636363;
+  font-size: 22px;
+  margin: 30px 0 0;
+}
+
+@media (max-width: 768px) {
+  .clients-title {
+    font-size: 36px;
+  }
+
+  .clients-heading {
+    font-size: 36px;
+  }
+
+  .clients-item {
+    font-size: 18px;
+    white-space: normal;
+  }
+}
+
+.content-block-figure {
+  margin: 0;
+}
+
+.content-block-image {
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.content-block-figure figcaption {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--color-body);
+}
+
+.content-block-carousel {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.content-block-carousel .gallery {
+  max-width: 100%;
+}
+
+.home-blocks {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.page-blocks {
+  margin-bottom: 30px;
+}
